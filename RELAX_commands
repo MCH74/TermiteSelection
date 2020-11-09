@@ -1,0 +1,9 @@
+##tree: (Medex,(Bger,(Znev,(Csec,(Rflav,Mnat{F})))));  #for each species {F} was moved to the corresponding branch
+
+name=$(head -n $SGE_TASK_ID filenames.txt | tail -n 1)  #filenames contains names of alignments
+
+mkdir Out_${name}
+
+cd Out_${name}
+
+~/hyphy_2.5.5_NOAVX_installation/bin/hyphy relax CPU=5 --alignment ~/${name} --tree ~/relax.tree --rates 2 --test F
